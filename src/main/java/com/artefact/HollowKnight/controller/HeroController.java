@@ -22,5 +22,4 @@ public class HeroController {
     public ResponseEntity<List<Hero>> getAllHeroes(){
         return new ResponseEntity<>(service.allHero(), HttpStatus.OK);
     }
-
 }

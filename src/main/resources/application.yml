@@ -4,7 +4,7 @@
 #    password: password
 #    url: jdbc:mysql//localhost:8080/hollowknight
 ##    driver-class-name: com.mysql.cj.jdbc.Driver
-#    server.port = 8080
+#    server.port = 3306
 #  jpa:
 #    show-sql: true
 #    hibernate:
