@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface HeroRepository extends JpaRepository<Hero,Integer> {
-    Optional<Hero> findHeroById(String heroId);
+public interface HeroRepository extends JpaRepository<Hero,String> {
+    Optional<Hero> findHeroByHeroId(String heroId);
 }

@@ -15,6 +15,7 @@ public class HeroService {
 
     public List<Hero> allHero(){ return repository.findAll();}
 
-    public Optional<Hero> singleHero(String heroId){ return repository.findHeroById(heroId);
+    public Optional<Hero> singleHero(String heroId){
+        return repository.findHeroByHeroId(heroId);
     }
 }

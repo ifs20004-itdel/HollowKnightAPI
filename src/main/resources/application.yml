@@ -4,9 +4,21 @@
 #    password: password
 #    url: jdbc:mysql//localhost:8080/hollowknight
 ##    driver-class-name: com.mysql.cj.jdbc.Driver
-#    server.port = 3306
+#    server.port = 8080
 #  jpa:
 #    show-sql: true
 #    hibernate:
 #      ddl-auto: update
 #    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+spring:
+  application:
+    name: HollowKnight
+
+hollowknight:
+  client:
+    service-url:
+      defaultZone : http://localhost:8080/
+
+server:
+  port: 8080
