@@ -5,7 +5,6 @@ import com.artefact.HollowKnight.dto.AuthRequest;
 import com.artefact.HollowKnight.model.UserCredential;
 import com.artefact.HollowKnight.response.ResponseHandler;
 import com.artefact.HollowKnight.service.AuthService;
-import com.artefact.HollowKnight.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +12,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -37,6 +39,7 @@ public class AuthController {
     public ResponseEntity<Object> getToken(@RequestBody AuthRequest authRequest){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if(authentication.isAuthenticated()){
+            Map<String,Object > response = new HashMap<>();
             return ResponseHandler.responseBuilder(
                     "Token generate successfully",
                     HttpStatus.OK,
@@ -50,11 +53,4 @@ public class AuthController {
             );
         }
     }
-
-
-//    @GetMapping("validate")
-//    public String validateToken(@RequestParam("token") String token){
-//        service.validateToken(token);
-//        return "Token is valid";
-//    }
 }

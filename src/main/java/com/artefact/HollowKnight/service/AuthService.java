@@ -26,7 +26,6 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
     public String extractUsername(String token){
@@ -69,7 +68,8 @@ public class AuthService {
         Map<String, String> map = new HashMap<>();
         Map<String, Object> claims = new HashMap<>();
         String token = createToken(claims, username);
-       map.put("token",token);
+        map.put("name", username);
+        map.put("token",token);
        return map;
     }
 
@@ -81,7 +81,6 @@ public class AuthService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
-//
     public boolean validateToken(String token, UserDetails userDetails){
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));

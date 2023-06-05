@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  mysqldb:
+    image: mysql
+    container_name: hollowknight
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'hollowknight'
+      MYSQL_ROOT_PASSWORD: 'root'
+    volumes:
+      - /c/Users/sibue/Desktop/db_data
+    ports:
+      - "3307:3306"
+
+  springboot-app:
+    image: springboot-app
+    container_name: hollow-knight-api
+    restart: always
+    build: .
+    ports:
+      - "8000:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/hollowknight
+    depends_on:
+      - mysqldb

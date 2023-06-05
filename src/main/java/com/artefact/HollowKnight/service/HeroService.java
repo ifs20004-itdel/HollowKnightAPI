@@ -18,4 +18,11 @@ public class HeroService {
     public Optional<Hero> singleHero(String heroId){
         return repository.findHeroByHeroId(heroId);
     }
+
+    public Hero saveHero(Hero hero) {
+        if(repository.findHeroByHeroId(hero.getHeroId()).isPresent()){
+            throw new RuntimeException("Data already exists");
+        };
+        return repository.save(hero);
+    }
 }
